@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+
+class SoSimple
+{
+private:
+    static int simObjCnt;
+public:
+    SoSimple()
+    {
+        simObjCnt++;
+        cout<<simObjCnt<<"번째 SoSimple 객체"<<endl;
+    }
+};
+int SoSimple::simObjCnt=0;
+
+class SoComplex
+{
+private:
+    static int cmxObjCnt;
+public:
+    SoComplex()
+    {
+        cmxObjCnt++;
+        cout<<cmxObjCnt<<"번째 SoComplex 객체임" << endl;
+    }
+    SoComplex(SoComplex& copy)
+    {
+        cmxObjCnt++;
+        cout<<cmxObjCnt<<"번째 SoComplex 객체" << endl;
+    }
+    ~SoComplex()
+    {
+        cout << "사라지고 있어!" << endl;
+    }
+};
+int SoComplex::cmxObjCnt = 0;
+
+int main(void)
+{
+    SoSimple sim1;
+    SoSimple sim2;
+
+    SoComplex cmx1;
+    SoComplex();
+    SoComplex cmx2 = cmx1;
+    return 0;
+}
